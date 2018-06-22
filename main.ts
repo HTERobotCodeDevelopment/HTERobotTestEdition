@@ -139,27 +139,6 @@ namespace HTERobot{
     } 
 
 
-    //% blockId=ExpandDigitalPinInPut block="ExpandDigitalPins|%index"
-    //% weight=100
-    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function ExpandDigitalPinInPut(index: ExpandDigitalPins) :void{
-        return pins.digitalReadPin(index);
-    } 
-
-    //% blockId=ExpandAnalogPinOutPut block="ExpandAnalogPins|%index|number %Value"
-    //% weight=100
-    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function ExpandAnalogPinOutPut(index: ExpandAnalogPins, Value:number) :void{
-        pins.analogWritePin(index,value);
-    } 
-
-
-    //% blockId=ExpandAnalogPinInPut block="ExpandAnalogPins|%index"
-    //% weight=100
-    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function ExpandAnalogPinInPut(index: ExpandAnalogPins) :void{
-        return pins.analogReadPin(index);
-    } 
 
     /**
 	 * 舵机打角0-180度
