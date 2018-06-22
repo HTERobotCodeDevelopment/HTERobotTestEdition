@@ -130,11 +130,11 @@ namespace HTERobot{
         setPwm((index - 1) * 2 + 1, 0, 0);
     }
 
-    //% blockId=ExpandDigitalPinOutPut block="ExpandDigitalPins|%index|number %Value"
+    //% blockId=ExpandDigitalPinOutPut block="ExpandDigitalPinsOutPut|%index|number %Value"
     //% weight=100
     //% Value.min=0 Value.max=1
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function ExpandDigitalPinOutPut(index: ExpandDigitalPins, Value:number) :void{
+    export function ExpandDigitalPinOutPut(index: DigitalPin, Value:number) :void{
         pins.digitalWritePin(index,Value);
     } 
 
