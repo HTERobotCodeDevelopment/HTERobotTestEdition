@@ -35,11 +35,11 @@ namespace HTERobot{
 
 
     export enum ExpandDigitalPins {
-        D0 = 15,
-        D1 = 20,
-        D2 = 21,
-        D4 = 22,
-        D5 = 23
+        D0 = 0,
+        D1 = 1,
+        D2 = 2,
+        D3 = 3,
+        D4 = 4
 
     }
 
@@ -134,8 +134,28 @@ namespace HTERobot{
     //% weight=100
     //% Value.min=0 Value.max=1
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function ExpandDigitalPinOutPut(index: DigitalPin, Value:number) :void{
-        pins.digitalWritePin(index,Value);
+    export function ExpandDigitalPinOutPut(index: ExpandDigitalPins, Value:number) :void{
+        if(index == 0)
+        {
+            pins.digitalWritePin(DigitalPin.P0,Value);
+        }
+        else if(index == 1)
+        {
+            pins.digitalWritePin(DigitalPin.P1,Value);
+        }
+        else if(index == 2)
+        {
+            pins.digitalWritePin(DigitalPin.P2,Value);
+        }
+        else if(index == 3)
+        {
+            pins.digitalWritePin(DigitalPin.P3,Value);
+        }
+        else if(index == 4)
+        {
+            pins.digitalWritePin(DigitalPin.P4,Value);
+        }
+
     } 
 
 
