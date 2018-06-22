@@ -137,23 +137,23 @@ namespace HTERobot{
     export function ExpandDigitalPinOutPut(index: ExpandDigitalPins, Value:number) :void{
         if(index == 0)
         {
-            pins.digitalWritePin(DigitalPin.P0,Value);
+            pins.digitalWritePin(DigitalPin.P8,Value);
         }
         else if(index == 1)
         {
-            pins.digitalWritePin(DigitalPin.P1,Value);
+            pins.digitalWritePin(DigitalPin.P13,Value);
         }
         else if(index == 2)
         {
-            pins.digitalWritePin(DigitalPin.P2,Value);
+            pins.digitalWritePin(DigitalPin.P14,Value);
         }
         else if(index == 3)
         {
-            pins.digitalWritePin(DigitalPin.P3,Value);
+            pins.digitalWritePin(DigitalPin.P15,Value);
         }
         else if(index == 4)
         {
-            pins.digitalWritePin(DigitalPin.P4,Value);
+            pins.digitalWritePin(DigitalPin.P16,Value);
         }
 
     } 
