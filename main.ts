@@ -44,9 +44,9 @@ namespace HTERobot{
     }
 
     export enum ExpandAnalogPins {
-        A0 = 7,
-        A1 = 8,
-        A2 = 9
+        A0 = 0,
+        A1 = 1,
+        A2 = 2
     }
 
 
@@ -131,7 +131,7 @@ namespace HTERobot{
     }
 
     //% blockId=ExpandDigitalPinOutPut block="ExpandDigitalPinsOutPut|%index|number %Value"
-    //% weight=100
+    //% weight=120
     //% Value.min=0 Value.max=1
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function ExpandDigitalPinOutPut(index: ExpandDigitalPins, Value:number) :void{
@@ -156,6 +156,72 @@ namespace HTERobot{
             pins.digitalWritePin(DigitalPin.P16,Value);
         }
 
+    } 
+
+
+
+    //% blockId=ExpandDigitalPinInPut block="ExpandDigitalPins|%index"
+    //% weight=120
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function ExpandDigitalPinInPut(index: ExpandDigitalPins) :void{
+        if(index == 0)
+        {
+            return pins.digitalReadPin(DigitalPin.P8);
+        }
+        else if(index == 1)
+        {
+            return pins.digitalReadPin(DigitalPin.P13);
+        }
+        else if(index == 2)
+        {
+            return pins.digitalReadPin(DigitalPin.P14);
+        }
+        else if(index == 3)
+        {
+            return pins.digitalReadPin(DigitalPin.P15);
+        }
+        else if(index == 4)
+        {
+            return pins.digitalReadPin(DigitalPin.P16);
+        }
+
+    } 
+
+
+    //% blockId=ExpandAnalogPinOutPut block="ExpandAnalogPins|%index|number %Value"
+    //% weight=120
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function ExpandAnalogPinOutPut(index: ExpandAnalogPins, Value:number) :void{
+        if(index == 0)
+        {
+            pins.analogWritePin(DigitalPin.P0,value);
+        }
+        else if(index == 1)
+        {
+            pins.analogWritePin(DigitalPin.P1,value);
+        }
+        else if(index == 2)
+        {
+            pins.analogWritePin(DigitalPin.P2,value);
+        }
+    } 
+
+    //% blockId=ExpandAnalogPinInPut block="ExpandAnalogPins|%index"
+    //% weight=120
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function ExpandAnalogPinInPut(index: ExpandAnalogPins) :void{
+        if(index == 0)
+        {
+            return pins.analogReadPin(DigitalPin.P0);
+        }
+        else if(index == 1)
+        {
+            return pins.analogReadPin(DigitalPin.P1);
+        }
+        else if(index == 2)
+        {
+            return pins.analogReadPin(DigitalPin.P2);
+        }
     } 
 
 
@@ -200,7 +266,7 @@ namespace HTERobot{
      * 电机运行速度-255~255
      */
     //% blockId=HTERobot_motor_run block="Motor|%index|speed %speed"
-    //% weight=85
+    //% weight=80
     //% speed.min=-255 speed.max=255
     export function MotorRun(index: Motors, speed: number): void {
         if (!initialized) {
@@ -244,7 +310,7 @@ namespace HTERobot{
      * 
      */
     //% blockId=HTERobot_motor_rundelay block="Motor|%index|speed %speed|delay %delay|s"
-    //% weight=81
+    //% weight=80
     //% speed.min=-255 speed.max=255
     export function MotorRunDelay(index: Motors, speed: number, delay: number): void {
         MotorRun(index, speed);
