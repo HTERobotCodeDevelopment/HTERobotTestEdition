@@ -267,6 +267,7 @@ namespace HTERobot{
      */
     //% blockId=HTERobot_motor_run block="Motor|%index|speed %speed"
     //% weight=80
+    //% blockGap=15
     //% speed.min=-255 speed.max=255
     export function MotorRun(index: Motors, speed: number): void {
         if (!initialized) {
