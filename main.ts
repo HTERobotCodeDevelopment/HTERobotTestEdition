@@ -134,12 +134,58 @@ namespace HTERobot{
 
 
     /**
+     * 拓展数字引脚读入函数
+     * @param index eg: D0-D4
+     */
+    //% blockId=ExpandDigitalPinInPut block="Digital Read ExpandPin |%index"
+    //% weight=60
+    //% blockGap=30
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function ExpandDigitalPinInPut(index: ExpandDigitalPins) :number{
+        if(index == 0)
+        {
+            return pins.digitalReadPin(DigitalPin.P8);
+        }
+        else if(index == 1)
+        {
+            return pins.digitalReadPin(DigitalPin.P13);
+        }
+        else if(index == 2)
+        {
+            return pins.digitalReadPin(DigitalPin.P14);
+        }
+        else if(index == 3)
+        {
+            return pins.digitalReadPin(DigitalPin.P15);
+        }
+        else if(index == 4)
+        {
+            return pins.digitalReadPin(DigitalPin.P16);
+        }
+        else if(index == 5)
+        {
+            return pins.digitalReadPin(DigitalPin.P0);
+        }
+        else if(index == 6)
+        {
+            return pins.digitalReadPin(DigitalPin.P1);
+        }
+        else if(index == 7)
+        {
+            return pins.digitalReadPin(DigitalPin.P2);
+        }
+        else 
+            return 0;
+
+    } 
+
+    /**
      * 拓展数字引脚输出函数
      * @param index index eg: D0-D4
      * @param Value value is 0 or 1
      */
-    //% blockId=ExpandDigitalPinOutPut block="ExpandDigitalPinsOutPut|%index|number %Value"
-    //% weight=120
+    //% blockId=ExpandDigitalPinOutPut block="Digital Write ExpandPin|%index|to|%Value"
+    //% weight=59
     //% Value.min=0 Value.max=1
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function ExpandDigitalPinOutPut(index: ExpandDigitalPins, Value:number) :void{
@@ -178,49 +224,31 @@ namespace HTERobot{
 
     } 
 
+    
     /**
-     * 拓展数字引脚读入函数
-     * @param index eg: D0-D4
+     * 拓展模拟引脚读入函数
+     * @param index eg:A0,A1,A2
      */
-    //% blockId=ExpandDigitalPinInPut block="ExpandDigitalPinsInPut|%index"
-    //% weight=120
+    //% blockId=ExpandAnalogPinInPut block="Analog Read ExpandPin |%index"
+    //% weight=58
+    //% blockGap=30
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function ExpandDigitalPinInPut(index: ExpandDigitalPins) :number{
+    export function ExpandAnalogPinInPut(index: ExpandAnalogPins) :number{
         if(index == 0)
         {
-            return pins.digitalReadPin(DigitalPin.P8);
+            return pins.analogReadPin(AnalogPin.P0);
         }
         else if(index == 1)
         {
-            return pins.digitalReadPin(DigitalPin.P13);
+            return pins.analogReadPin(AnalogPin.P1);
         }
         else if(index == 2)
         {
-            return pins.digitalReadPin(DigitalPin.P14);
+            return pins.analogReadPin(AnalogPin.P2);
         }
-        else if(index == 3)
-        {
-            return pins.digitalReadPin(DigitalPin.P15);
-        }
-        else if(index == 4)
-        {
-            return pins.digitalReadPin(DigitalPin.P16);
-        }
-        else if(index == 5)
-        {
-            return pins.digitalReadPin(DigitalPin.P0);
-        }
-        else if(index == 6)
-        {
-            return pins.digitalReadPin(DigitalPin.P1);
-        }
-        else if(index == 7)
-        {
-            return pins.digitalReadPin(DigitalPin.P2);
-        }
-
+        else
+            return 0;
     } 
-
 
 
     /**
@@ -228,8 +256,8 @@ namespace HTERobot{
      * @param index  eg:A0,A1,A2
      * @param Value   value is 0-1024
      */
-    //% blockId=ExpandAnalogPinOutPut block="ExpandAnalogPinsOutPut|%index|number %Value"
-    //% weight=120
+    //% blockId=ExpandAnalogPinOutPut block="Analog Write ExpandPin|%index| to |%Value"
+    //% weight=57
     //% Value.min=0 Value.max=1023
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function ExpandAnalogPinOutPut(index: ExpandAnalogPins, Value:number) :void{
@@ -248,7 +276,7 @@ namespace HTERobot{
     } 
 
 
-
+   
 
 
 
@@ -258,7 +286,7 @@ namespace HTERobot{
 	 * @param Degree [0-180] Degree of servo; eg: 0, 90, 180
 	*/
     //% blockId=HTERobot_servo block="Servo|%index|Degree %Degree"
-    //% weight=100
+    //% weight=49
     //% blockGap=30
     //% Degree.min=0 Degree.max=180
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
@@ -274,7 +302,7 @@ namespace HTERobot{
 
 
     //% blockId=HTERobot_servoAccurate block="ServoAccurate|%index|DegreeAcurrate %DegreeAcurrate"
-    //% weight=100
+    //% weight=48
     //% DegreeAcurrate.min=0 DegreeAcurrate.max=1800
     export function ServoAccurate(index: Servos, DegreeAcurrate: number): void {
         if (!initialized) {
@@ -292,7 +320,7 @@ namespace HTERobot{
      * 电机运行速度-255~255
      */
     //% blockId=HTERobot_motor_run block="Motor|%index|speed %speed"
-    //% weight=80
+    //% weight=39
     //% blockGap=30
     //% speed.min=-255 speed.max=255
     export function MotorRun(index: Motors, speed: number): void {
@@ -337,7 +365,7 @@ namespace HTERobot{
      * 
      */
     //% blockId=HTERobot_motor_rundelay block="Motor|%index|speed %speed|delay %delay|s"
-    //% weight=80
+    //% weight=38
     //% speed.min=-255 speed.max=255
     export function MotorRunDelay(index: Motors, speed: number, delay: number): void {
         MotorRun(index, speed);
@@ -349,18 +377,36 @@ namespace HTERobot{
      * Motor Stop
      */
     //% blockId=HTERobot_stop block="Motor Stop|%index|"
-    //% weight=80
+    //% weight=37
     export function MotorStop(index: Motors): void {
         MotorRun(index, 0);
     }
 
+    
+    /**
+     * HTERobot_i2cwriteReg
+     */
     //% blockId=HTERobot_i2cwriteReg block="DeviceAddr|%addr|Reg %reg|Value %value"
-    //% weight=60
+    //% weight=29
+    //% blockGap=30
     export function i2cwriteReg(addr: number, reg: number, value: number) {
         let buf = pins.createBuffer(2)
         buf[0] = reg
         buf[1] = value
         pins.i2cWriteBuffer(addr, buf)
+    }
+
+
+    /**
+     * HTERobot_i2cwriteReg
+     */
+    //% blockId=HTERobot_i2cwriteReg block="DeviceAddr|%addr|Reg %reg"
+    //% weight=28
+
+    export function i2creadReg(addr: number, reg: number): number{
+        pins.i2cWriteNumber(addr, reg, NumberFormat.UInt8BE);
+        let val = pins.i2cReadNumber(addr, NumberFormat.UInt8BE);
+        return val;
     }
 
 }
