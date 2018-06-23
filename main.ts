@@ -139,7 +139,6 @@ namespace HTERobot{
      */
     //% blockId=ExpandDigitalPinInPut block="Digital Read ExpandPin |%index"
     //% weight=60
-    //% blockGap=50
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function ExpandDigitalPinInPut(index: ExpandDigitalPins) :number{
         if(index == 0)
@@ -186,6 +185,7 @@ namespace HTERobot{
      */
     //% blockId=ExpandDigitalPinOutPut block="Digital Write ExpandPin|%index|to|%Value"
     //% weight=59
+    //% blockGap=40
     //% Value.min=0 Value.max=1
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function ExpandDigitalPinOutPut(index: ExpandDigitalPins, Value:number) :void{
@@ -231,7 +231,6 @@ namespace HTERobot{
      */
     //% blockId=ExpandAnalogPinInPut block="Analog Read ExpandPin |%index"
     //% weight=58
-    //% blockGap=50
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function ExpandAnalogPinInPut(index: ExpandAnalogPins) :number{
         if(index == 0)
@@ -258,6 +257,7 @@ namespace HTERobot{
      */
     //% blockId=ExpandAnalogPinOutPut block="Analog Write ExpandPin|%index| to |%Value"
     //% weight=57
+    //% blockGap=40
     //% Value.min=0 Value.max=1023
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function ExpandAnalogPinOutPut(index: ExpandAnalogPins, Value:number) :void{
@@ -287,7 +287,6 @@ namespace HTERobot{
 	*/
     //% blockId=HTERobot_servo block="Servo|%index|Degree %Degree"
     //% weight=49
-    //% blockGap=50
     //% Degree.min=0 Degree.max=180
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function Servo(index: Servos, Degree: number): void {
@@ -299,10 +298,14 @@ namespace HTERobot{
         let value = v_us * 4096 / 20000
         setPwm(index + 7, 0, value)
     }
-
-
+    /**
+	 * 舵机打角0.0-180.0度
+	 * @param index Servo Channel; eg: S1
+	 * @param Degree [0.0-180.0] Degree of servo; eg: 0, 900, 1800
+	*/
     //% blockId=HTERobot_servoAccurate block="ServoAccurate|%index|DegreeAcurrate %DegreeAcurrate"
     //% weight=48
+    //% blockGap=40
     //% DegreeAcurrate.min=0 DegreeAcurrate.max=1800
     export function ServoAccurate(index: Servos, DegreeAcurrate: number): void {
         if (!initialized) {
@@ -321,7 +324,6 @@ namespace HTERobot{
      */
     //% blockId=HTERobot_motor_run block="Motor|%index|speed %speed"
     //% weight=39
-    //% blockGap=50
     //% speed.min=-255 speed.max=255
     export function MotorRun(index: Motors, speed: number): void {
         if (!initialized) {
@@ -378,6 +380,7 @@ namespace HTERobot{
      */
     //% blockId=HTERobot_stop block="Motor Stop|%index|"
     //% weight=37
+    //% blockGap=40
     export function MotorStop(index: Motors): void {
         MotorRun(index, 0);
     }
@@ -388,7 +391,6 @@ namespace HTERobot{
      */
     //% blockId=HTERobot_i2cwriteReg block="DeviceAddr|%addr|Reg %reg|Value %value"
     //% weight=29
-    //% blockGap=50
     export function i2cwriteReg(addr: number, reg: number, value: number) {
         let buf = pins.createBuffer(2)
         buf[0] = reg
@@ -402,7 +404,7 @@ namespace HTERobot{
      */
     //% blockId=HTERobot_i2creadReg block="DeviceAddr|%addr|Reg %reg"
     //% weight=28
-
+    //% blockGap=40
     export function i2creadReg(addr: number, reg: number): number{
         pins.i2cWriteNumber(addr, reg, NumberFormat.UInt8BE);
         let val = pins.i2cReadNumber(addr, NumberFormat.UInt8BE);
