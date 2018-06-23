@@ -160,32 +160,7 @@ namespace HTERobot{
 
 
 
-    //% blockId=ExpandDigitalPinInPut block="ExpandDigitalPins|%index"
-    //% weight=120
-    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function ExpandDigitalPinInPut(index: ExpandDigitalPins) :void{
-        if(index == 0)
-        {
-            return pins.digitalReadPin(DigitalPin.P8);
-        }
-        else if(index == 1)
-        {
-            return pins.digitalReadPin(DigitalPin.P13);
-        }
-        else if(index == 2)
-        {
-            return pins.digitalReadPin(DigitalPin.P14);
-        }
-        else if(index == 3)
-        {
-            return pins.digitalReadPin(DigitalPin.P15);
-        }
-        else if(index == 4)
-        {
-            return pins.digitalReadPin(DigitalPin.P16);
-        }
 
-    } 
 
 
     //% blockId=ExpandAnalogPinOutPut block="ExpandAnalogPins|%index|number %Value"
@@ -206,23 +181,6 @@ namespace HTERobot{
         }
     } 
 
-    //% blockId=ExpandAnalogPinInPut block="ExpandAnalogPins|%index"
-    //% weight=120
-    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function ExpandAnalogPinInPut(index: ExpandAnalogPins) :void{
-        if(index == 0)
-        {
-            return pins.analogReadPin(AnalogPin.P0);
-        }
-        else if(index == 1)
-        {
-            return pins.analogReadPin(AnalogPin.P1);
-        }
-        else if(index == 2)
-        {
-            return pins.analogReadPin(AnalogPin.P2);
-        }
-    } 
 
 
 
