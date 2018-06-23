@@ -130,6 +130,12 @@ namespace HTERobot{
         setPwm((index - 1) * 2 + 1, 0, 0);
     }
 
+
+    /**
+     * 拓展数字引脚输出函数
+     * @param index index eg: D0-D4
+     * @param Value value is 0 or 1
+     */
     //% blockId=ExpandDigitalPinOutPut block="ExpandDigitalPinsOutPut|%index|number %Value"
     //% weight=120
     //% Value.min=0 Value.max=1
@@ -158,13 +164,47 @@ namespace HTERobot{
 
     } 
 
+    /**
+     * 拓展数字引脚读入函数
+     * @param index eg: D0-D4
+     */
+    //% blockId=ExpandDigitalPinInPut block="ExpandDigitalPins|%index"
+    //% weight=120
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function ExpandDigitalPinInPut(index: ExpandDigitalPins) :number{
+        if(index == 0)
+        {
+            return pins.digitalReadPin(DigitalPin.P8);
+        }
+        else if(index == 1)
+        {
+            return pins.digitalReadPin(DigitalPin.P13);
+        }
+        else if(index == 2)
+        {
+            return pins.digitalReadPin(DigitalPin.P14);
+        }
+        else if(index == 3)
+        {
+            return pins.digitalReadPin(DigitalPin.P15);
+        }
+        else if(index == 4)
+        {
+            return pins.digitalReadPin(DigitalPin.P16);
+        }
+
+    } 
 
 
 
-
-
+    /**
+     * 拓展模拟引脚输出函数
+     * @param index  eg:A0,A1,A2
+     * @param Value   value is 0-1024
+     */
     //% blockId=ExpandAnalogPinOutPut block="ExpandAnalogPins|%index|number %Value"
     //% weight=120
+    //% Value.min=0 Value.max=1023
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function ExpandAnalogPinOutPut(index: ExpandAnalogPins, Value:number) :void{
         if(index == 0)
@@ -180,7 +220,27 @@ namespace HTERobot{
             pins.analogWritePin(AnalogPin.P2,Value);
         }
     } 
-
+    /**
+     * 拓展模拟引脚读入函数
+     * @param index eg:A0,A1,A2
+     */
+    //% blockId=ExpandAnalogPinInPut block="ExpandAnalogPins|%index"
+    //% weight=120
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function ExpandAnalogPinInPut(index: ExpandAnalogPins) :number{
+        if(index == 0)
+        {
+            return pins.analogReadPin(AnalogPin.P0);
+        }
+        else if(index == 1)
+        {
+            return pins.analogReadPin(AnalogPin.P1);
+        }
+        else if(index == 2)
+        {
+            return pins.analogReadPin(AnalogPin.P2);
+        }
+    } 
 
 
 
@@ -191,7 +251,7 @@ namespace HTERobot{
 	*/
     //% blockId=HTERobot_servo block="Servo|%index|Degree %Degree"
     //% weight=100
-    //% blockGap=15
+    //% blockGap=30
     //% Degree.min=0 Degree.max=180
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function Servo(index: Servos, Degree: number): void {
@@ -225,7 +285,7 @@ namespace HTERobot{
      */
     //% blockId=HTERobot_motor_run block="Motor|%index|speed %speed"
     //% weight=80
-    //% blockGap=15
+    //% blockGap=30
     //% speed.min=-255 speed.max=255
     export function MotorRun(index: Motors, speed: number): void {
         if (!initialized) {
