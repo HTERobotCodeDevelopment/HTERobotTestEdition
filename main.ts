@@ -194,15 +194,15 @@ namespace HTERobot{
     export function ExpandAnalogPinOutPut(index: ExpandAnalogPins, Value:number) :void{
         if(index == 0)
         {
-            pins.analogWritePin(AnalogPin.P0,value);
+            pins.analogWritePin(AnalogPin.P0,Value);
         }
         else if(index == 1)
         {
-            pins.analogWritePin(AnalogPin.P1,value);
+            pins.analogWritePin(AnalogPin.P1,Value);
         }
         else if(index == 2)
         {
-            pins.analogWritePin(AnalogPin.P2,value);
+            pins.analogWritePin(AnalogPin.P2,Value);
         }
     } 
 
@@ -247,7 +247,7 @@ namespace HTERobot{
     }
 
 
-    //% blockId=HTERobot_servoAccurate block="Servo|%index|DegreeAcurrate %DegreeAcurrate"
+    //% blockId=HTERobot_servoAccurate block="ServoAccurate|%index|DegreeAcurrate %DegreeAcurrate"
     //% weight=100
     //% DegreeAcurrate.min=0 DegreeAcurrate.max=1800
     export function ServoAccurate(index: Servos, DegreeAcurrate: number): void {
