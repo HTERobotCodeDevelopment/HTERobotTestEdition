@@ -39,8 +39,10 @@ namespace HTERobot{
         D1 = 1,
         D2 = 2,
         D3 = 3,
-        D4 = 4
-
+        D4 = 4,
+        A0 = 5,
+        A1 = 6,
+        A2 = 7
     }
 
     export enum ExpandAnalogPins {
@@ -161,6 +163,18 @@ namespace HTERobot{
         {
             pins.digitalWritePin(DigitalPin.P16,Value);
         }
+        else if(index == 5)
+        {
+            pins.digitalWritePin(DigitalPin.P0,Value);
+        }
+        else if(index == 6)
+        {
+            pins.digitalWritePin(DigitalPin.P1,Value);
+        }
+        else if(index == 7)
+        {
+            pins.digitalWritePin(DigitalPin.P2,Value);
+        }
 
     } 
 
@@ -168,7 +182,7 @@ namespace HTERobot{
      * 拓展数字引脚读入函数
      * @param index eg: D0-D4
      */
-    //% blockId=ExpandDigitalPinInPut block="ExpandDigitalPins|%index"
+    //% blockId=ExpandDigitalPinInPut block="ExpandDigitalPinsInPut|%index"
     //% weight=120
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function ExpandDigitalPinInPut(index: ExpandDigitalPins) :number{
@@ -192,6 +206,18 @@ namespace HTERobot{
         {
             return pins.digitalReadPin(DigitalPin.P16);
         }
+        else if(index == 5)
+        {
+            return pins.digitalReadPin(DigitalPin.P0);
+        }
+        else if(index == 6)
+        {
+            return pins.digitalReadPin(DigitalPin.P1);
+        }
+        else if(index == 7)
+        {
+            return pins.digitalReadPin(DigitalPin.P2);
+        }
 
     } 
 
@@ -202,7 +228,7 @@ namespace HTERobot{
      * @param index  eg:A0,A1,A2
      * @param Value   value is 0-1024
      */
-    //% blockId=ExpandAnalogPinOutPut block="ExpandAnalogPins|%index|number %Value"
+    //% blockId=ExpandAnalogPinOutPut block="ExpandAnalogPinsOutPut|%index|number %Value"
     //% weight=120
     //% Value.min=0 Value.max=1023
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
@@ -220,27 +246,9 @@ namespace HTERobot{
             pins.analogWritePin(AnalogPin.P2,Value);
         }
     } 
-    /**
-     * 拓展模拟引脚读入函数
-     * @param index eg:A0,A1,A2
-     */
-    //% blockId=ExpandAnalogPinInPut block="ExpandAnalogPins|%index"
-    //% weight=120
-    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function ExpandAnalogPinInPut(index: ExpandAnalogPins) :number{
-        if(index == 0)
-        {
-            return pins.analogReadPin(AnalogPin.P0);
-        }
-        else if(index == 1)
-        {
-            return pins.analogReadPin(AnalogPin.P1);
-        }
-        else if(index == 2)
-        {
-            return pins.analogReadPin(AnalogPin.P2);
-        }
-    } 
+
+
+
 
 
 
@@ -346,5 +354,13 @@ namespace HTERobot{
         MotorRun(index, 0);
     }
 
+    //% blockId=HTERobot_i2cwriteReg block="DeviceAddr|%addr|Reg %reg|Value %value"
+    //% weight=60
+    export function i2cwriteReg(addr: number, reg: number, value: number) {
+        let buf = pins.createBuffer(2)
+        buf[0] = reg
+        buf[1] = value
+        pins.i2cWriteBuffer(addr, buf)
+    }
 
 }
