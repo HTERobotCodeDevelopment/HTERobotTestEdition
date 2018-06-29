@@ -411,4 +411,22 @@ namespace HTERobot{
         return val;
     }
 
+
+    /**
+     * HTERobot_TTSSpeak
+     */
+    //% blockId=HTERobot_i2creadReg block="DeviceAddr|%addr|Reg %reg"
+    //% weight=28
+    //% blockGap=40
+    export function TTSSpeak(text: string): void{
+        let len = text.length; 
+        let buf = pins.createBuffer(4);
+        buf[0] = 0xFD;
+        buf[1] = 0x00;
+        buf[2] = len+2;
+        buf[2] = 0x01;
+        buf[2] = 0x01;
+        buf = buf.concat(text);
+        pins.i2cWriteBuffer(0x80, buf);       
+    }
 }

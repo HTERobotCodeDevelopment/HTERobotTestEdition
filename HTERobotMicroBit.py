@@ -4,7 +4,7 @@
     Author: LingJunMeng
     Date:   2018.6
 
-    http://www.micropython.org.cn
+    http://www.hterobot.com
 '''
 from microbit import *
 
@@ -78,6 +78,69 @@ class robot():
         buf = bytearray([buf0,buf1,buf2,buf3,buf4])
 
         i2c.write(PCA9685_ADDRESS, buf)
+
+
+
+    def ExpandDigitalPinInPut(self,index):
+        if index == 'D0':
+            return pin8.read_digital()
+        elif index == 'D1':
+            return pin13.read_digital()
+        elif index == 'D2':
+            return pin14.read_digital()
+        elif index == 'D3':
+            return pin15.read_digital()
+        elif index == 'D4':
+            return pin16.read_digital()
+        elif index == 'A0':
+            return pin0.read_digital()
+        elif index == 'A1':
+            return pin1.read_digital()
+        elif index == 'A2':
+            return pin2.read_digital()
+        else: 
+            return 0
+
+
+
+    def ExpandDigitalPinOutPut(self,index,Value):
+        if index == 'D0':
+            pin8.write_digital(Value)
+        elif index == 'D1':
+            pin13.write_digital(Value)
+        elif index == 'D2':
+            pin14.write_digital(Value)
+        elif index == 'D3':
+            pin15.write_digital(Value)
+        elif index == 'D4':
+            pin16.write_digital(Value)
+        elif index == 'A0':
+            pin0.write_digital(Value)
+        elif index == 'A1':
+            pin1.write_digital(Value)
+        elif index == 'A2':
+            pin2.write_digital(Value)
+
+    
+    def ExpandAnalogPinInPut(self,index):
+        if index == 'A0':
+            return pin0.read_analog()
+        elif index == 'A1':
+            return pin1.read_analog()
+        elif index == 'A2':
+            return pin2.read_analog()
+        else:
+            return 0
+
+
+    def ExpandAnalogPinOutPut(self,index,Value):
+        if index == 'A0':
+            pin0.write_analog(Value)
+        elif index == 'A1':
+            pin1.write_analog(Value)
+        elif index == 'A2':
+            pin2.write_analog(Value) 
+
 
     def Servo(self,index, degree):
         # 50hz: 20,000 us
