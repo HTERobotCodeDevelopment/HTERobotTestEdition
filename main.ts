@@ -415,7 +415,7 @@ namespace HTERobot{
     /**
      * HTERobot_TTSSpeak
      */
-    //% blockId=HTERobot_i2creadReg block="DeviceAddr|%addr|Reg %reg"
+    //% blockId=HTERobot_TTSSpeak block="Test|%text"
     //% weight=28
     //% blockGap=40
     export function TTSSpeak(text: string): void{
